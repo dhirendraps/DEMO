@@ -6,11 +6,6 @@ pipeline {
         sh 'mvn clean'
       }
     }
-    stage('build') {
-      steps {
-        sh 'mvn install'
-      }
-    }
   }
   environment {
     maven_3_6_0 = 'E:\\apache-maven-3.6.0-bin\\apache-maven-3.6.0'
