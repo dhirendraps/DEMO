@@ -3,7 +3,12 @@ pipeline {
   stages {
     stage('Initalize') {
       steps {
-        echo 'test pipe line'
+        sh 'mvn clean'
+      }
+    }
+    stage('build') {
+      steps {
+        build 'mvn install'
       }
     }
   }
