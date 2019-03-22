@@ -21,7 +21,7 @@ pipeline {
         echo 'Gerrit-Code Step'
       }
     }
-    stage('QAC') {
+    stage('') {
       parallel {
         stage('QAC') {
           steps {
