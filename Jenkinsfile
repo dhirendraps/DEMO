@@ -1,14 +1,59 @@
 pipeline {
   agent any
   stages {
-    stage('Initialize') {
+    stage('IBM-DNG') {
       steps {
-        sh 'mvn clean'
+        echo 'DNG Stage'
       }
     }
-  }
-  environment {
-    maven_3_6_0 = 'E:\\apache-maven-3.6.0-bin\\apache-maven-3.6.0'
-    java8 = 'C:\\Program Files\\Java\\jdk1.8.0_181'
+    stage('IBMRRTC') {
+      steps {
+        echo 'IBMRRTC stage'
+      }
+    }
+    stage('ModelAdvisor') {
+      steps {
+        echo 'ModelAdvisor Step'
+      }
+    }
+    stage('Gerrit-Code') {
+      steps {
+        echo 'Gerrit-Code Step'
+      }
+    }
+    stage('QAC') {
+      parallel {
+        stage('QAC') {
+          steps {
+            echo 'QAC Parallel Step'
+          }
+        }
+        stage('Polyspace') {
+          steps {
+            echo 'Polyspace parallel step'
+          }
+        }
+        stage('LDRA') {
+          steps {
+            echo 'LDRA parallel step'
+          }
+        }
+      }
+    }
+    stage('MatlabSimuLinkTest') {
+      steps {
+        echo 'MatlabSimuLinkTest Step'
+      }
+    }
+    stage('CantataTest') {
+      steps {
+        echo 'Cantata Step'
+      }
+    }
+    stage('ECUTest') {
+      steps {
+        echo 'ECUTest step'
+      }
+    }
   }
 }
